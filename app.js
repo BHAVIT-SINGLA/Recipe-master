@@ -4,7 +4,8 @@ const app=express();
 const port=process.env.PORT || 3000;
 
 require('dotenv').config();
-
+const db=require('./server/models/db');
+const category=require('./server/models/category');
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.use(expressLayouts);
