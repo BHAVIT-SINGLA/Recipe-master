@@ -21,7 +21,7 @@
     <% if(food.length>0 ) { %>
     <% food.forEach((item,index) =>
     { %>
-        <a href="#" class="col text-center category__link">
+        <a href="/category/<%- item.name %>" class="col text-center category__link">
             <div class="category__img shadow">
                 <img src="img/<%- item.image %> " alt="item.name">
             </div>

@@ -38,11 +38,22 @@ exports.exploreRecipe = async(req, res) => {
     try {
       let recipeId = req.params.id;
       const recipe = await Recipe.findById(recipeId);
-      console.log(recipe);
+    //  console.log(recipe);
       res.render('recipe', { title: 'Cooking Blog - Recipe', recipe } );
     } catch (error) {
       res.satus(500).send({message: error.message || "Error Occured" });
     }
   } 
-
+  exports.exploreCategory = async(req, res) => { 
+    try {
+      let name = req.params.name;
+      console.log(name);
+      const limitNumber = 20;
+      const Category = await Recipe.find({ 'category': name }).limit(limitNumber);
+      console.log(Category);
+      res.render('categories', { title: 'Cooking Blog - Categoreis', Category } );
+    } catch (error) {
+      res.satus(500).send({message: error.message || "Error Occured" });
+    }
+  } 
  
