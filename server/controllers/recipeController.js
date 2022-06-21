@@ -56,4 +56,26 @@ exports.exploreRecipe = async(req, res) => {
       res.satus(500).send({message: error.message || "Error Occured" });
     }
   } 
+  exports.searchRecipe = async(req, res) => {
+    try {
+      let searchTerm = req.body.searchTerm;
+      let recipe = await Recipe.find( { $text: { $search: searchTerm, $diacriticSensitive: true } });
+      res.render('search-result', { title: 'Cooking Blog - Search', recipe } );
+    } catch (error) {
+      res.satus(500).send({message: error.message || "Error Occured" });
+    }
+    
+  }
+  exports.explorelatest =async(req,res) =>{
+    try{
+        const numberofitems=20;
+        const latest = await Recipe.find({}).sort({_id: -1}).limit(numberofitems);
+        res.render('latest',{title : 'All-Category',food:latest});
+
+    }
+    catch (error) {
+        console.log('err', + error)
+      }
+   
+}
  

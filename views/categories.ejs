@@ -11,7 +11,7 @@
     <% if(Category.length>0 ) { %>
     <% Category.forEach((item,index) =>
     { %>
-        <a href="#" class="col text-center category__link">
+        <a href="/recipe/<%-item._id %>" class="col text-center category__link">
             <div class="category__img shadow">
                 <img src="<%- item.image %> " alt="item.name">
             </div>

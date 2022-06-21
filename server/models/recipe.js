@@ -27,4 +27,5 @@ const recipeSchema = new mongoose.Schema({
     required: 'This field is required.'
   },
 });
+recipeSchema.index({ name: 'text', description: 'text' });
 module.exports = mongoose.model('Recipe', recipeSchema);
